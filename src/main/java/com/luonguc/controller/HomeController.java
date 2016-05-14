@@ -39,7 +39,7 @@ public class HomeController {
 	@Autowired private TeamService teamService;
 	@Autowired private PositionService positionService;
 	
-	// Home - index
+	// home
 	@RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json",
 			headers = "Accept=application/json")
 	public String home(Model model) {
