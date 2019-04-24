@@ -1,6 +1,6 @@
 package com.luong.peepxadmin.web.rest;
 
-import com.luong.peepxadmin.JhipsterApp;
+import com.luong.peepxadmin.PeepxAdminApp;
 import com.luong.peepxadmin.config.SecurityBeanOverrideConfiguration;
 import com.luong.peepxadmin.web.rest.vm.LoggerVM;
 import ch.qos.logback.classic.AsyncAppender;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see LogsResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, JhipsterApp.class})
+@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, PeepxAdminApp.class})
 public class LogsResourceIntTest {
 
     private MockMvc restLogsMockMvc;

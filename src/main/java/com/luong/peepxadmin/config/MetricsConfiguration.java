@@ -10,7 +10,6 @@ import com.codahale.metrics.health.HealthCheckRegistry;
 import com.codahale.metrics.jvm.*;
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 import com.ryantenney.metrics.spring.config.annotation.MetricsConfigurerAdapter;
-import com.zaxxer.hikari.HikariDataSource;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.dropwizard.DropwizardExports;
 import io.prometheus.client.exporter.MetricsServlet;
@@ -18,7 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.*;
 
@@ -46,15 +44,8 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter implements Se
 
     private final JHipsterProperties jHipsterProperties;
 
-    private HikariDataSource hikariDataSource;
-
     public MetricsConfiguration(JHipsterProperties jHipsterProperties) {
         this.jHipsterProperties = jHipsterProperties;
-    }
-
-    @Autowired(required = false)
-    public void setHikariDataSource(HikariDataSource hikariDataSource) {
-        this.hikariDataSource = hikariDataSource;
     }
 
     @Override
@@ -78,12 +69,6 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter implements Se
         metricRegistry.register(PROP_METRIC_REG_JVM_FILES, new FileDescriptorRatioGauge());
         metricRegistry.register(PROP_METRIC_REG_JVM_BUFFERS, new BufferPoolMetricSet(ManagementFactory.getPlatformMBeanServer()));
         metricRegistry.register(PROP_METRIC_REG_JVM_ATTRIBUTE_SET, new JvmAttributeGaugeSet());
-        if (hikariDataSource != null) {
-            log.debug("Monitoring the datasource");
-            // remove the factory created by HikariDataSourceMetricsPostProcessor until JHipster migrate to Micrometer
-            hikariDataSource.setMetricsTrackerFactory(null);
-            hikariDataSource.setMetricRegistry(metricRegistry);
-        }
         if (jHipsterProperties.getMetrics().getJmx().isEnabled()) {
             log.debug("Initializing Metrics JMX reporting");
             JmxReporter jmxReporter = JmxReporter.forRegistry(metricRegistry).build();

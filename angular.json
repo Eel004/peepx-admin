@@ -3,14 +3,14 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "jhipster": {
+    "peepx-admin": {
       "root": "",
       "sourceRoot": "src/main/webapp",
       "projectType": "application",
       "architect": {}
     }
   },
-  "defaultProject": "jhipster",
+  "defaultProject": "peepx-admin",
   "cli": {
     "packageManager": "npm"
   },

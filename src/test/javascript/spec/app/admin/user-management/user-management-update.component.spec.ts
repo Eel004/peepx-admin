@@ -3,7 +3,7 @@ import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
-import { JhipsterTestModule } from '../../../test.module';
+import { PeepxAdminTestModule } from '../../../test.module';
 import { UserMgmtUpdateComponent } from 'app/admin/user-management/user-management-update.component';
 import { UserService, User, JhiLanguageHelper } from 'app/core';
 
@@ -19,7 +19,7 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [JhipsterTestModule],
+                imports: [PeepxAdminTestModule],
                 declarations: [UserMgmtUpdateComponent],
                 providers: [
                     {

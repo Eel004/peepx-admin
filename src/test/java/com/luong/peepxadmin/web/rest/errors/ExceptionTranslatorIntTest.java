@@ -1,6 +1,6 @@
 package com.luong.peepxadmin.web.rest.errors;
 
-import com.luong.peepxadmin.JhipsterApp;
+import com.luong.peepxadmin.PeepxAdminApp;
 import com.luong.peepxadmin.config.SecurityBeanOverrideConfiguration;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ExceptionTranslator
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, JhipsterApp.class})
+@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, PeepxAdminApp.class})
 public class ExceptionTranslatorIntTest {
 
     @Autowired
@@ -45,14 +45,6 @@ public class ExceptionTranslatorIntTest {
             .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter)
             .build();
-    }
-
-    @Test
-    public void testConcurrencyFailure() throws Exception {
-        mockMvc.perform(get("/test/concurrency-failure"))
-            .andExpect(status().isConflict())
-            .andExpect(content().contentType(MediaType.APPLICATION_PROBLEM_JSON))
-            .andExpect(jsonPath("$.message").value(ErrorConstants.ERR_CONCURRENCY_FAILURE));
     }
 
     @Test

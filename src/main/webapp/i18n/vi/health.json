@@ -16,8 +16,7 @@
             "configServer": "Trung tâm cấu hình Microservice",
             "hystrix": "Hystrix",
             "diskSpace": "Dung lượng trống",
-            "mail": "Email",
-            "db": "Cơ sở dữ liệu"
+            "mail": "Email"
         },
         "table": {
             "service": "Tên dịch vụ",

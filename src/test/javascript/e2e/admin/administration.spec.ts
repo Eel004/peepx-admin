@@ -47,13 +47,6 @@ describe('administration', () => {
         expect(value1).to.eq(expect1);
     });
 
-    it('should load audits', async () => {
-        await navBarPage.clickOnAdmin('audits');
-        const expect1 = 'audits.title';
-        const value1 = await element(by.id('audits-page-heading')).getAttribute('jhiTranslate');
-        expect(value1).to.eq(expect1);
-    });
-
     it('should load logs', async () => {
         await navBarPage.clickOnAdmin('logs');
         const expect1 = 'logs.title';

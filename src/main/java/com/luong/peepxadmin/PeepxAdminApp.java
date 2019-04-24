@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -23,21 +22,21 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @SpringBootApplication
-@EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
+@EnableConfigurationProperties({ApplicationProperties.class})
 @EnableDiscoveryClient
 @EnableZuulProxy
-public class JhipsterApp {
+public class PeepxAdminApp {
 
-    private static final Logger log = LoggerFactory.getLogger(JhipsterApp.class);
+    private static final Logger log = LoggerFactory.getLogger(PeepxAdminApp.class);
 
     private final Environment env;
 
-    public JhipsterApp(Environment env) {
+    public PeepxAdminApp(Environment env) {
         this.env = env;
     }
 
     /**
-     * Initializes jhipster.
+     * Initializes peepxAdmin.
      * <p>
      * Spring profiles can be configured with a program argument --spring.profiles.active=your-active-profile
      * <p>
@@ -62,7 +61,7 @@ public class JhipsterApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(JhipsterApp.class);
+        SpringApplication app = new SpringApplication(PeepxAdminApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);
